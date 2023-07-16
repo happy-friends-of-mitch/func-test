@@ -18,15 +18,15 @@ module.exports = async function (context, req) {
         // threadテーブルからthread_idとthread_nameをJSONファイルとして出力
         const conn = await mysql.createConnection(config);
         const [rows, fields] = await conn.execute(
-            'SELECT thread_id, thread_name FROM thread WHERE thread_id = 1 ORDER BY thread_id'
+            'SELECT thread_id, thread_name FROM thread  ORDER BY thread_id'
             );
             const thread = JSON.stringify(rows);
             context.log(thread);
             fs.writeFileSync('thread.json', thread);
             context.log('thread.jsonにthreadテーブルのデータを出力しました。');
-    //megaテーブルからimg_url,reply_id,thread_id,threadテーブルからthread_nameをJSONファイルとして出力
-    const [rows2, fields2] = await conn.execute(
-        'SELECT mega.img_url, mega.reply_id, mega.thread_id FROM mega WHERE id = 1 '
+        //megaテーブルからimg_url,reply_id,thread_id,threadテーブルからthread_nameをJSONファイルとして出力
+        const [rows2, fields2] = await conn.execute(
+            'SELECT mega.img_url, mega.reply_id, mega.thread_id, thread.thread_name FROM mega INNER JOIN thread ON mega.id = thread.thread_id'
         // 'SELECT mega.img_url, mega.reply_id, mega.thread_id, thread.thread_name FROM mega INNER JOIN thread ON mega.thread_id = thread.thread_id'
         );
         const mega = JSON.stringify(rows2);
