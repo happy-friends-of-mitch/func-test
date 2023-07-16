@@ -49,7 +49,7 @@ module.exports = async function (context, req) {
     const blockBlobClient = containerClient.getBlockBlobClient(blobName);
 
     // Base64エンコードされたデータを取得する
-    const data:string = req.body.image;
+    const data:string = req.body.base64;
     if (data) {
         console.log("data is not null");
     }
