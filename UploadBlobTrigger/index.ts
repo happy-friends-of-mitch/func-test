@@ -44,7 +44,7 @@ module.exports = async function (context, req) {
     const containerClient = blobServiceClient.getContainerClient(containerName);
     const fileType:string = req.body.fileType;
     // ファイル名を決める
-    const blobName:string = 'image-' + Date.now().toString() + "."+fileType;
+    const blobName:string = 'https://smaru1111.blob.core.windows.net/post-img-container/image-' + Date.now().toString() + "."+fileType;
     // const blobName:string = 'image-' + Date.now().toString() + ".jpeg";
     const blockBlobClient = containerClient.getBlockBlobClient(blobName);
 
