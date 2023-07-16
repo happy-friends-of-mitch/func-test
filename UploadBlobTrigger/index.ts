@@ -44,7 +44,7 @@ module.exports = async function (context, req) {
     const containerClient = blobServiceClient.getContainerClient(containerName);
     const fileType:string = req.body.fileType;
     // ファイル名を決める
-    const blobName:string = 'https://smaru1111.blob.core.windows.net/post-img-container/image-' + Date.now().toString() + "."+fileType;
+    const blobName:string = 'image-' + Date.now().toString() + "."+fileType;
     // const blobName:string = 'image-' + Date.now().toString() + ".jpeg";
     const blockBlobClient = containerClient.getBlockBlobClient(blobName);
 
@@ -58,7 +58,7 @@ module.exports = async function (context, req) {
     const imageData = Buffer.from(data, 'base64');
     await blockBlobClient.upload(imageData, imageData.length);
     // thread_idとthread_nameをリクエストボディから取得
-    const img_url: string = blobName;
+    const img_url: string = "https://smaru1111.blob.core.windows.net/post-img-container/"+blobName;
     const reply_id: number = Number(req.body.reply_id);
     const thread_id: number = Number(req.body.thread_id);
     // const img_url: string = blobName;
