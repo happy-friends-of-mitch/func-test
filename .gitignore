@@ -10,7 +10,7 @@ Publish
 *.cscfg
 *.Cache
 project.lock.json
-.DigiCertGlobalRootCA.crt.pem
+
 /packages
 /TestResults
 
