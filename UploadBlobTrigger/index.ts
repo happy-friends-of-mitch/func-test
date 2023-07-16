@@ -18,7 +18,7 @@ async function registerMega(MegaInfo: MegaInfo): Promise<void> {
       port: 3306,
       ssl: { ca: fs.readFileSync("DigiCertGlobalRootCA.crt.pem") }
     };
-   
+
     console.log("img_upload")
     const conn = await mysql.createConnection(config);
     const [rows, fields] = await conn.execute(
