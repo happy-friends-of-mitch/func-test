@@ -2,6 +2,7 @@ import { AzureFunction, Context, HttpRequest } from "@azure/functions"
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
     context.log('JavaScript HTTP trigger function processed a request.');
+    context.log(req.body);
 
     if (req.body && (req.body.base64 && req.body.fileType && req.body.replay_id && req.body.thread_id)) {
         context.res = {
