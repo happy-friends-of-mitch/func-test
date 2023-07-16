@@ -4,7 +4,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     context.log('JavaScript HTTP trigger function processed a request.');
     context.log(req.body);
 
-    if (req.body && (req.body.base64 && req.body.fileType && req.body.replay_id && req.body.thread_id)) {
+    if (req.body && (req.body.base64 && req.body.fileType && req.body.reply_id && req.body.thread_id)) {
         context.res = {
             // status: 200, /* Defaults to 200 */
             body: "All True!!"
