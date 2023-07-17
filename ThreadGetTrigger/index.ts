@@ -19,11 +19,9 @@ module.exports = async function (context, req) {
         const [rows, fields] = await conn.execute(
             'SELECT thread_id, thread_name FROM thread  ORDER BY RAND()'
             );
-            const thread = JSON.stringify(rows);
-            context.log(thread);
             context.log('thread.jsonにthreadテーブルのデータを出力しました。');
             context.res = {
                 // status: 200, /* Defaults to 200 */
-                body: thread
+                body: rows
             };
         };

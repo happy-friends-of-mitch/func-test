@@ -34,11 +34,11 @@ module.exports = async function (context, req) {
             [thread_id]
         // 'SELECT mega.img_url, mega.reply_id, mega.thread_id, thread.thread_name FROM mega INNER JOIN thread ON mega.thread_id = thread.thread_id'
         );
-        const mega = JSON.stringify(rows2);
+        // const mega = JSON.stringify(rows2);
         context.log('mega.jsonにmegaテーブルのデータを出力しました。');  
         context.res = {
             // status: 200, /* Defaults to 200 */
-            body: mega
+            body: rows2
         };
         }
         //例外処理を書いてください
