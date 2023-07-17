@@ -25,6 +25,8 @@ async function registerMega(MegaInfo: MegaInfo): Promise<void> {
       'INSERT INTO mega ( img_url,reply_id,thread_id) VALUES ( ?, ?, ?)',
       [ MegaInfo.img_url,MegaInfo.reply_id,MegaInfo.thread_id]
     );
+    // コネクションを閉じる
+    conn.end();
 
     console.log('megaテーブルにデータを登録しました。');
   } catch (error) {

@@ -21,6 +21,8 @@ async function registerThread(threadInfo: ThreadInfo): Promise<void> {
             'INSERT INTO thread ( thread_name) VALUES (?)',
             [threadInfo.thread_name]
         );
+        // コネクションを閉じる
+        conn.end();
 
         console.log('threadテーブルにデータを登録しました。');
     } catch (error) {

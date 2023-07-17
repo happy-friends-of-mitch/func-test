@@ -21,6 +21,8 @@ module.exports = async function (context, req) {
         const [rows2, fields2] = await conn.execute(
         'SELECT mega.img_url, mega.reply_id, mega.thread_id, thread.thread_name FROM mega INNER JOIN thread ON mega.thread_id = thread.thread_id ORDER BY RAND()'
         );
+        // コネクションを閉じる
+        conn.end();
         const mega = JSON.stringify(rows2);
         context.log('mega.jsonにmegaテーブルのデータを出力しました。');  
         context.res = {
